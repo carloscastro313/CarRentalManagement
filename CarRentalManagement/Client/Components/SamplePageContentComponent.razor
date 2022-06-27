@@ -1,0 +1,14 @@
+﻿<h3>SamplePageContentComponent</h3>
+
+<h5>Solo es un ejemplo</h5>
+
+<button class="btn btn-primary" @onclick="CountEvent"> Hola a todos @counter</button>
+
+@code {
+    public int counter = 0;
+
+    public void CountEvent()
+    {
+        this.counter++;
+    }
+}
