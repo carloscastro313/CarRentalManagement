@@ -1,5 +1,7 @@
 using CarRentalManagement.Server.Data;
+using CarRentalManagement.Server.IRepository;
 using CarRentalManagement.Server.Models;
+using CarRentalManagement.Server.Repository;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +27,8 @@ namespace Company.WebApplication1
 
             builder.Services.AddAuthentication()
                 .AddIdentityServerJwt();
+
+            builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
@@ -59,6 +63,7 @@ namespace Company.WebApplication1
             app.MapRazorPages();
             app.MapControllers();
             app.MapFallbackToFile("index.html");
+
 
             app.Run();
         }
